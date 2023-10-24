@@ -1,16 +1,14 @@
 import { Dispatch } from "redux";
 import { appActions } from "app/app-reducer";
 import axios, { AxiosError } from "axios";
-import { ResponseType } from "api/auth-api";
 
-export const handleServerAppError = <D>(data: ResponseType<D>, dispatch: Dispatch, showError: boolean = true) => {
-  if (data.messages.length) {
-    dispatch(appActions.setAppError({ error: data.messages[0] }));
-  } else {
-    dispatch(appActions.setAppError({ error: "Some error occurred" }));
-  }
-  dispatch(appActions.setAppStatus({ status: "failed" }));
-};
+/**
+ * Handle server network error and dispatch appropriate actions.
+ *
+ * @param {unknown} e - The error object.
+ * @param {Dispatch} dispatch - The dispatch function.
+ * @returns {void}
+ */
 
 export const handleServerNetworkError = (e: unknown, dispatch: Dispatch) => {
   const err = e as Error | AxiosError<{ error: string }>;
