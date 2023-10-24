@@ -14,7 +14,6 @@ export const useActions = <Actions extends ActionCreatorsMapObject = ActionCreat
   actions: Actions
 ): BoundActions<Actions> => {
   const dispatch = useAppDispatch();
-
   return useMemo(() => bindActionCreators(actions, dispatch), []);
 };
 
