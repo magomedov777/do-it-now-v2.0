@@ -4,7 +4,15 @@ import { AppRootStateType } from 'app/store'
 import { AlertProps, Snackbar } from '@mui/material'
 import MuiAlert from '@mui/material/Alert';
 import { appActions } from 'app/app-reducer';
-import {selectError} from "app/app-selectors";
+import { selectError } from "app/app-selectors";
+
+/**
+ * Alert component.
+ *
+ * @param {AlertProps} props - The props for the Alert component.
+ * @param {React.Ref<HTMLDivElement>} ref - The ref for the Alert component.
+ * @returns {JSX.Element} The rendered Alert component.
+ */
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 	props,
@@ -22,7 +30,7 @@ export function ErrorSnackbar() {
 		if (reason === 'clickaway') {
 			return
 		}
-		dispatch(appActions.setAppError({error: null}))
+		dispatch(appActions.setAppError({ error: null }))
 	}
 
 
