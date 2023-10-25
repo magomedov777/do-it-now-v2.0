@@ -22,11 +22,10 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(selectTodolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(selectTasks)
     const isLoggedIn = useSelector<AppRootStateType, boolean>(selectIsLoggedIn)
-
     const dispatch = useAppDispatch()
-
-    const { fetchTodoLists, changeTodolistTitle, removeTodolist } = useActions(todoListsThunks)
+    const { fetchTodoLists, changeTodolistTitle, removeTodolist, addTodoList } = useActions(todoListsThunks)
     const { updateTask } = useActions(tasksThunks)
+    const { changeTodolistFilter } = useActions(todolistsActions)
 
     useEffect(() => {
         if (demo || !isLoggedIn) {
@@ -41,7 +40,7 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
     }, [])
 
     const changeFilter = useCallback((value: FilterValuesType, todolistId: string) => {
-        dispatch(todolistsActions.changeTodolistFilter({ id: todolistId, filter: value }))
+        changeTodolistFilter({ id: todolistId, filter: value })
     }, [])
 
     const removeTodoList = useCallback((todolistId: string) => {
@@ -53,8 +52,8 @@ export const TodolistsList: React.FC<PropsType> = ({ demo = false }) => {
     }, [])
 
     const addTodolist = useCallback((title: string) => {
-        dispatch(todoListsThunks.addTodoList({ title }))
-    }, [dispatch])
+        addTodoList({ title })
+    }, [])
 
     if (!isLoggedIn) {
         return <Navigate to={"/login"} />
