@@ -26,7 +26,7 @@ type PropsType = {
 	demo?: boolean
 }
 
-function App({ demo = false }: PropsType) {
+const App = ({ demo = false }) => {
 	const status = useSelector<AppRootStateType, RequestStatusType>(selectStatus)
 	const isInitialized = useSelector<AppRootStateType, boolean>(selectIsInitialized)
 	const isLoggedIn = useSelector<AppRootStateType, boolean>(selectIsLoggedIn)
@@ -48,7 +48,6 @@ function App({ demo = false }: PropsType) {
 			<CircularProgress />
 		</div>
 	}
-
 	return (
 		<div className="App">
 			<ErrorSnackbar />
