@@ -19,12 +19,10 @@ type Props = {
     demo?: boolean
 }
 
-export const Todolist: FC<Props> = memo(function ({ demo = false, ...Props }: Props) {
-
+export const Todolist: FC<Props> = memo(({ demo = false, ...Props }) => {
     let { todolist, removeTodolist, changeTodolistTitle, changeFilter, addTask, tasks } = Props
 
     const { fetchTasks } = useActions(tasksThunks)
-
 
     useEffect(() => {
         if (demo) {
@@ -47,7 +45,6 @@ export const Todolist: FC<Props> = memo(function ({ demo = false, ...Props }: Pr
     const onAllClickHandler = useCallback(() => changeFilter('all', todolist.id), [todolist.id, changeFilter])
     const onActiveClickHandler = useCallback(() => changeFilter('active', todolist.id), [todolist.id, changeFilter])
     const onCompletedClickHandler = useCallback(() => changeFilter('completed', todolist.id), [todolist.id, changeFilter])
-
 
     let tasksForTodolist = tasks
 
