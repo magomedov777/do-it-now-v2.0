@@ -1,5 +1,5 @@
-import { instance } from "api/todolists-api";
-import { ResponseType } from "api/auth-api";
+import { instance } from "api/common-api";
+import { ResponseType } from "./common-types";
 import { GetTasksResponse, TaskType, UpdateTaskModelType } from "features/TodolistsList/tasks/Task/task-types";
 
 export const taskAPI = {

@@ -1,10 +1,11 @@
-import { todolistAPI, TodolistType } from "api/todolists-api";
+import { TodolistType } from "api/common-api";
 import { appActions, RequestStatusType } from "app/app-reducer";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "utils/create-app-async-thunk";
 import { thunkTryCatch } from "utils/thunk-try-catch";
 import { handleServerAppError } from "utils/handle-server-app-error";
 import { ResultCode } from "utils";
+import { todolistAPI } from "api/todolist-api";
 
 const fetchTodoLists = createAppAsyncThunk<{ todolists: TodolistType[] }>("todo/fetchTodos", async (arg, thunkAPI) => {
   const { dispatch, rejectWithValue } = thunkAPI;

@@ -4,8 +4,9 @@ import { todolistsActions } from "features/TodolistsList/Todolist/todolists-redu
 import { tasksActions } from "features/TodolistsList/tasks/tasks-reducer";
 import { createAppAsyncThunk } from "utils/create-app-async-thunk";
 import { thunkTryCatch } from "utils/thunk-try-catch";
-import { authAPI, LoginParamsType } from "api/auth-api";
+import { authAPI } from "api/auth-api";
 import { handleServerAppError } from "utils/handle-server-app-error";
+import { LoginParamsType } from "api/auth-types";
 
 const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsType>("auth/login", async (arg, thunkAPI) => {
   return thunkTryCatch(thunkAPI, async () => {
