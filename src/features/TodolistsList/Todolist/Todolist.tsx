@@ -22,7 +22,6 @@ type Props = {
 
 export const Todolist: FC<Props> = memo(({ demo = false, ...Props }) => {
     let { todolist, removeTodolist, changeTodolistTitle, changeFilter, addTask, tasks } = Props
-
     const { fetchTasks } = useActions(tasksThunks)
 
     useEffect(() => {

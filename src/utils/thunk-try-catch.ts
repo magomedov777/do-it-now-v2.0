@@ -9,7 +9,7 @@ import { handleServerNetworkError } from "./handle-server-network-error";
  * @returns {Promise<any>} A promise that resolves or rejects based on the thunk logic.
  */
 
-export const thunkTryCatch = async (thunkApi: any, logic: () => {}) => {
+export const thunkTryCatch = async (thunkApi: any, logic: () => {}): Promise<any> => {
   const { dispatch, rejectWithValue } = thunkApi;
   try {
     dispatch(appActions.setAppStatus({ status: "loading" }));
