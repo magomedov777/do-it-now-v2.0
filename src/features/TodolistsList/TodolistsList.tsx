@@ -5,7 +5,7 @@ import {
     FilterValuesType,
     TodolistDomainType, todolistsActions, todoListsThunks
 } from 'features/TodolistsList/Todolist/todolists-reducer'
-import { TasksStateType, tasksThunks } from 'features/TodolistsList/tasks/tasks-reducer'
+import { tasksThunks } from 'features/TodolistsList/tasks/tasks-reducer'
 import { Grid, Paper } from '@mui/material'
 import { AddItemForm } from 'components/AddItemForm/AddItemForm'
 import { Todolist } from './Todolist/Todolist'
@@ -13,6 +13,7 @@ import { Navigate } from 'react-router-dom'
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { selectIsLoggedIn, selectTasks, selectTodolists } from "app/app-selectors";
 import { useActions } from "hooks/useAction";
+import { TasksStateType } from './tasks/Task'
 
 type PropsType = {
     demo?: boolean
