@@ -17,7 +17,7 @@ import {
 	Toolbar,
 	Typography
 } from '@mui/material';
-import { Menu } from '@mui/icons-material'
+import { Menu, Title } from '@mui/icons-material'
 import { selectIsInitialized, selectIsLoggedIn, selectStatus } from "app/app-selectors";
 import { authThunks } from "features/Login/auth-reducer";
 import { useActions } from "hooks/useAction";
@@ -51,14 +51,22 @@ const App: FC<Props> = ({ demo = false }) => {
 		<div className="App">
 			<ErrorSnackbar />
 			<AppBar position="static">
-				<Toolbar>
+				<Toolbar style={{ backgroundColor: '#800080', color: '#ffd700', boxShadow: 'black 2px 2px 0 0' }}>
 					<IconButton edge="start" color="inherit" aria-label="menu">
 						<Menu />
 					</IconButton>
-					<Typography variant="h6">
-						News
+					<Typography variant="h6" style={{ fontWeight: 'bold' }}>
+						Menu
 					</Typography>
-					{isLoggedIn && <Button color="inherit" onClick={logoutHandler}>Log out</Button>}
+					<p style={{
+						position: 'absolute',
+						marginLeft: '700px',
+						fontSize: '25px',
+						fontFamily: 'TimesNewRoman',
+						fontWeight: 'bolder'
+					}}>Do it now</p>
+
+					{isLoggedIn && <Button style={{ marginLeft: '1350px', fontWeight: 'bold' }} color="inherit" onClick={logoutHandler}>Logout</Button>}
 				</Toolbar>
 				{status === 'loading' && <LinearProgress />}
 			</AppBar>
