@@ -8,7 +8,8 @@ import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, 
 import { selectIsLoggedIn } from "app/app-selectors";
 import { authThunks } from "features/Login/auth-reducer";
 import style from './login.module.css'
-import { LoginParamsType, ResponseType } from "api/auth-api";
+import { LoginParamsType } from 'api/auth-types'
+import { ResponseType } from 'api/common-types'
 
 export const Login = () => {
     const dispatch = useAppDispatch()

@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { appActions } from "app/app-reducer";
-import { ResponseType } from "api/auth-api";
+import { ResponseType } from "../api/common-types";
 
 /**
  * Handle server app error based on the response data.

@@ -1,4 +1,6 @@
-import { instance } from "api/todolists-api";
+import { instance } from "api/common-api";
+import { ResponseType } from "./common-types";
+import { LoginParamsType } from "./auth-types";
 
 export const authAPI = {
   login(data: LoginParamsType) {
@@ -10,18 +12,4 @@ export const authAPI = {
   me() {
     return instance.get<ResponseType<{ id: number; email: string; login: string }>>("auth/me");
   },
-};
-
-export type LoginParamsType = {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-  captcha?: string;
-};
-
-export type ResponseType<D = {}> = {
-  resultCode: number;
-  messages: Array<string>;
-  data: D;
-  fieldsErrors: [{ field: string; error: string }];
 };

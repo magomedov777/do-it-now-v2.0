@@ -6,7 +6,7 @@ import {
   todoListsThunks,
 } from "features/TodolistsList/Todolist/todolists-reducer";
 import { v1 } from "uuid";
-import { TodolistType } from "api/todolists-api";
+import { TodolistType } from "api/common-api";
 import { RequestStatusType } from "app/app-reducer";
 
 let todolistId1: string;
