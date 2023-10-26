@@ -1,6 +1,6 @@
 import { ActionCreator, ActionCreatorsMapObject, AsyncThunk, bindActionCreators } from "@reduxjs/toolkit";
 import { useMemo } from "react";
-import { useAppDispatch } from "hooks/useAppDispatch";
+import { useAppDispatch } from "./useAppDispatch";
 
 /**
  * Hook to bind actions to the dispatch function.

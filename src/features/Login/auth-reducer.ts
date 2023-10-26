@@ -22,7 +22,6 @@ const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsType>("aut
 
 const logout = createAppAsyncThunk<{ isLoggedIn: boolean }, void>("auth/logout", async (arg, thunkAPI) => {
   const { dispatch, rejectWithValue } = thunkAPI;
-
   return thunkTryCatch(thunkAPI, async () => {
     let res = await authAPI.logout();
     if (res.data.resultCode === 0) {
