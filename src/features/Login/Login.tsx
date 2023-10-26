@@ -1,14 +1,14 @@
 import React from 'react'
-import {useFormik, FormikHelpers} from 'formik'
-import {useSelector} from 'react-redux'
-import {AppRootStateType} from 'app/store'
-import {Navigate} from 'react-router-dom'
-import {useAppDispatch} from 'hooks/useAppDispatch';
-import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from '@mui/material'
-import {selectIsLoggedIn} from "app/app-selectors";
-import {authThunks} from "features/Login/auth-reducer";
+import { useFormik, FormikHelpers } from 'formik'
+import { useSelector } from 'react-redux'
+import { AppRootStateType } from 'app/store'
+import { Navigate } from 'react-router-dom'
+import { useAppDispatch } from 'hooks/useAppDispatch';
+import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField } from '@mui/material'
+import { selectIsLoggedIn } from "app/app-selectors";
+import { authThunks } from "features/Login/auth-reducer";
 import style from './login.module.css'
-import {LoginParamsType, ResponseType} from "api/auth-api";
+import { LoginParamsType, ResponseType } from "api/auth-api";
 
 export const Login = () => {
     const dispatch = useAppDispatch()
@@ -37,9 +37,9 @@ export const Login = () => {
             dispatch(authThunks.login(values))
                 .unwrap()
                 .catch((reason: ResponseType) => {
-                    let {fieldsErrors} = reason
+                    let { fieldsErrors } = reason
 
-                    if(fieldsErrors){
+                    if (fieldsErrors) {
                         fieldsErrors.forEach((fieldsError) => {
                             formikHelpers.setFieldError(fieldsError.field, fieldsError.error)
                         })
@@ -49,10 +49,8 @@ export const Login = () => {
     })
 
     if (isLoggedIn) {
-        return <Navigate to={"/"}/>
+        return <Navigate to={"/"} />
     }
-
-
     return <Grid container justifyContent="center">
         <Grid item xs={4}>
             <form onSubmit={formik.handleSubmit}>
@@ -60,7 +58,7 @@ export const Login = () => {
                     <FormLabel>
                         <p>
                             To log in get registered <a href={'https://social-network.samuraijs.com/'}
-                                                        target={'_blank'}>here</a>
+                                target={'_blank'}>here</a>
                         </p>
                         <p>
                             or use common test account credentials:

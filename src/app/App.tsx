@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { FC, useCallback, useEffect } from 'react'
 import './App.css'
 import { TodolistsList } from 'features/TodolistsList/TodolistsList'
 import { ErrorSnackbar } from 'components/ErrorSnackbar/ErrorSnackbar'
@@ -22,15 +22,14 @@ import { selectIsInitialized, selectIsLoggedIn, selectStatus } from "app/app-sel
 import { authThunks } from "features/Login/auth-reducer";
 import { useActions } from "hooks/useAction";
 
-type PropsType = {
+type Props = {
 	demo?: boolean
 }
 
-const App = ({ demo = false }) => {
+const App: FC<Props> = ({ demo = false }) => {
 	const status = useSelector<AppRootStateType, RequestStatusType>(selectStatus)
 	const isInitialized = useSelector<AppRootStateType, boolean>(selectIsInitialized)
 	const isLoggedIn = useSelector<AppRootStateType, boolean>(selectIsLoggedIn)
-
 	const { initializeApp } = useActions(appThunks)
 	const { logout } = useActions(authThunks)
 
