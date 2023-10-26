@@ -4,7 +4,8 @@ import { EditableSpan } from 'components/EditableSpan/EditableSpan'
 import { Delete } from '@mui/icons-material'
 import { tasksThunks } from "features/TodolistsList/tasks/tasks-reducer";
 import { useActions } from "hooks/useAction";
-import { TaskStatuses, TaskType } from "api/task-api";
+import { TaskType } from './task-types';
+import { TaskStatuses } from 'utils';
 
 type Props = {
 	task: TaskType

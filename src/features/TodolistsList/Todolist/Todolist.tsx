@@ -6,9 +6,9 @@ import { FilterValuesType, TodolistDomainType } from 'features/TodolistsList/Tod
 import { Button, IconButton } from '@mui/material'
 import { Delete } from '@mui/icons-material'
 import { tasksThunks } from "features/TodolistsList/tasks/tasks-reducer";
-import { TaskType } from "api/task-api";
 import { useActions } from 'hooks'
 import { TaskStatuses } from 'utils'
+import { TaskType } from '../tasks/Task'
 
 type Props = {
     todolist: TodolistDomainType
