@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, useCallback, memo } from 'react'
-import { Checkbox, IconButton } from '@mui/material'
+import { Checkbox, IconButton, ThemeProvider, createMuiTheme } from '@mui/material'
 import { EditableSpan } from 'components/EditableSpan/EditableSpan'
 import { Delete } from '@mui/icons-material'
 import { tasksThunks } from "features/TodolistsList/tasks/tasks-reducer";
@@ -14,7 +14,6 @@ type Props = {
 
 
 export const Task: FC<Props> = memo(({ task, todolistId }) => {
-
 	const { removeTask, updateTask } = useActions(tasksThunks)
 
 	const removeTaskHandler = useCallback(() => removeTask({ taskId: task.id, todolistId }), [task.id, todolistId]);
