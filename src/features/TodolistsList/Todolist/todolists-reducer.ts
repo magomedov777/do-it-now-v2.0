@@ -3,12 +3,11 @@ import { appActions, RequestStatusType } from "app/app-reducer";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "utils/create-app-async-thunk";
 import { thunkTryCatch } from "utils/thunk-try-catch";
-import { ResultCode } from "api/auth-api";
 import { handleServerAppError } from "utils/handle-server-app-error";
+import { ResultCode } from "utils";
 
 const fetchTodoLists = createAppAsyncThunk<{ todolists: TodolistType[] }>("todo/fetchTodos", async (arg, thunkAPI) => {
   const { dispatch, rejectWithValue } = thunkAPI;
-
   return thunkTryCatch(thunkAPI, async () => {
     const res = await todolistAPI.getTodolists();
     dispatch(appActions.setAppStatus({ status: "succeeded" }));
@@ -20,10 +19,8 @@ const removeTodolist = createAppAsyncThunk<{ todolistId: string }, { todolistId:
   "todo/removeTodos",
   async (arg, thunkAPI) => {
     const { dispatch, rejectWithValue } = thunkAPI;
-
     dispatch(todolistsActions.changeTodolistEntityStatus({ id: arg.todolistId, status: "loading" }));
     dispatch(appActions.setAppStatus({ status: "loading" }));
-
     return thunkTryCatch(thunkAPI, async () => {
       let res = await todolistAPI.deleteTodolist(arg.todolistId);
       if (res.data.resultCode === ResultCode.Success) {
@@ -41,7 +38,6 @@ const addTodoList = createAppAsyncThunk<{ todolist: TodolistType }, { title: str
   "todo/addTodo",
   async (arg, thunkAPI) => {
     const { dispatch, rejectWithValue } = thunkAPI;
-
     return thunkTryCatch(thunkAPI, async () => {
       const res = await todolistAPI.createTodolist(arg.title);
       dispatch(appActions.setAppStatus({ status: "succeeded" }));
@@ -54,7 +50,6 @@ const changeTodolistTitle = createAppAsyncThunk<{ id: string; title: string }, {
   "todo/changeTodoTitle",
   async (arg, thunkAPI) => {
     const { dispatch, rejectWithValue } = thunkAPI;
-
     return thunkTryCatch(thunkAPI, async () => {
       let res = await todolistAPI.updateTodolist(arg.id, arg.title);
       if (res.data.resultCode === ResultCode.Success) {
